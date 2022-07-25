@@ -1,7 +1,7 @@
 const readlineSync = require('readline-sync');
  
-// let countOfValue = readlineSync.question('Введите размер числа: ');
-// let countOfTry = readlineSync.question('Введите количество попыток(Неограниченно = 0):')
+let countOfValue = readlineSync.question('Введите размер числа: ');
+let countOfTry = readlineSync.question('Введите количество попыток(Неограниченно = 0):')
 
 function checkWin(valueRobot, valueHuman, countOfValue) {
     let countOfCow = 0 // Цифры совпадают и на своих местах
@@ -23,4 +23,18 @@ function checkWin(valueRobot, valueHuman, countOfValue) {
     console.log(countOfBulls)
 }
 
-checkWin(44443, 33334, 5)
+function getValueRobot(countOfValue) {
+    let valueRobot = ""
+    for(let i = 0; i < countOfValue; i++) {
+        valueRobot += Math.floor((Math.random() * 10) + 1).toString()
+    }
+    console.log(valueRobot)
+}
+
+while(1) {
+    
+}
+
+// checkWin(44443, 33334, 5)
+getValueRobot(5)
+
