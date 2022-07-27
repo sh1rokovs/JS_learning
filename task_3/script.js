@@ -1,14 +1,17 @@
 const readlineSync = require('readline-sync');
  
-let countOfValue = readlineSync.question('Введите размер числа: ');
-let countOfTry = readlineSync.question('Введите количество попыток(Неограниченно = 0):')
+let countOfValue = +readlineSync.question('Введите размер числа: ');
+let countOfTry = +readlineSync.question('Введите количество попыток(Неограниченно = 0): ')
 
-function checkWin(valueRobot, valueHuman, countOfValue) {
+function checkWin(valueRobot, valueHuman, countOfValue) { //return countOfCow, countOfBulls
+    let valuesCow = []
+    let valuesBulls = []
     let countOfCow = 0 // Цифры совпадают и на своих местах
     let countOfBulls = 0 // Такая цифра есть в числе, но не на своем месте
     for(let i = 0; i < countOfValue; i++) {
         if(valueRobot.toString()[i] == valueHuman.toString()[i]) {
             countOfCow++
+            valuesCow.push(valueHuman.toString()[i])
         }
         else {
             let valueRobot1 = valueRobot.toString()
@@ -16,25 +19,39 @@ function checkWin(valueRobot, valueHuman, countOfValue) {
             if(valueRobot1.includes(valueHuman.toString()[i]))
             {
                 countOfBulls++
+                valuesBulls.push(valueHuman.toString()[i])
             }
         }
     }
-    console.log(countOfCow)
-    console.log(countOfBulls)
+    return countOfCow, countOfBulls, valuesCow, valuesBulls
 }
 
-function getValueRobot(countOfValue) {
+function getValueRobot(countOfValue) { //return valueRobot
     let valueRobot = ""
     for(let i = 0; i < countOfValue; i++) {
         valueRobot += Math.floor((Math.random() * 10) + 1).toString()
     }
-    console.log(valueRobot)
+    return valueRobot
 }
 
-while(1) {
-    
+if(countOfTry < 0) {
+    countOfTry = 0
+}
+else if(countOfTry == 0){
+    countOfTry = true
+}
+
+let valueRobot = getValueRobot(5)
+while(countOfTry) {
+    if(countOfTry != true){
+        countOfTry--
+    }
+
+    let valueHuman = +readlineSync.question('Введите число: ')
+
+    checkWin(valueRobot, valueHuman, countOfValue)
 }
 
 // checkWin(44443, 33334, 5)
-getValueRobot(5)
+// getValueRobot(5)
 
