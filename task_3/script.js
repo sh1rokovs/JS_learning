@@ -1,9 +1,10 @@
 const readlineSync = require('readline-sync');
  
-let countOfValue = +readlineSync.question('Введите размер числа: ');
-let countOfTry = +readlineSync.question('Введите количество попыток(Неограниченно = 0): ')
+let countOfValue = +readlineSync.question('Enter count of number: ');
+let countOfTry = +readlineSync.question('Enter count of try(Infinity = 0): ')
 
 function checkWin(valueRobot, valueHuman, countOfValue) { //return countOfCow, countOfBulls
+    console.log(valueRobot, valueHuman, countOfValue)
     let valuesCow = []
     let valuesBulls = []
     let countOfCow = 0 // Цифры совпадают и на своих местах
@@ -23,14 +24,16 @@ function checkWin(valueRobot, valueHuman, countOfValue) { //return countOfCow, c
             }
         }
     }
-    return countOfCow, countOfBulls, valuesCow, valuesBulls
+    console.log(countOfCow, countOfBulls, valuesCow, valuesBulls)
+    return [countOfCow, countOfBulls, valuesCow, valuesBulls]
 }
 
 function getValueRobot(countOfValue) { //return valueRobot
     let valueRobot = ""
     for(let i = 0; i < countOfValue; i++) {
-        valueRobot += Math.floor((Math.random() * 10) + 1).toString()
+        valueRobot += Math.floor((Math.random() * 9) + 1).toString()
     }
+    console.log(valueRobot)
     return valueRobot
 }
 
@@ -41,17 +44,20 @@ else if(countOfTry == 0){
     countOfTry = true
 }
 
-let valueRobot = getValueRobot(5)
+let valueRobot = getValueRobot(countOfValue)
 while(countOfTry) {
     if(countOfTry != true){
         countOfTry--
     }
+    let valueHuman = +readlineSync.question('Enter number: ')
+    console.log(checkWin(valueRobot, valueHuman, countOfValue))
+    let [countOfCow, countOfBulls, valuesCow, valuesBulls] = checkWin(valueRobot, valueHuman, countOfValue)
 
-    let valueHuman = +readlineSync.question('Введите число: ')
-
-    checkWin(valueRobot, valueHuman, countOfValue)
+    if(countOfCow == countOfValue){
+        console.log(`You win, number is - ${valueRobot}`)
+        countOfTry = false
+    }
+    else {
+        console.log(`Matching numbers are out of place - ${countOfBulls}[${valuesBulls}], Numbers in place - ${countOfCow}[${valuesCow}]`)
+    }
 }
-
-// checkWin(44443, 33334, 5)
-// getValueRobot(5)
-
