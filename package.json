@@ -1,0 +1,25 @@
+{
+  "dependencies": {
+    "readline": "^1.3.0",
+    "readline-sync": "^1.4.10"
+  },
+  "name": "js_learning",
+  "description": "task_1 - Сборщик писем <br> task_2 - Шифровальщик <br> task_3 - Быки и коровы <br>",
+  "version": "1.0.0",
+  "main": "script.js",
+  "devDependencies": {},
+  "scripts": {
+    "start": "node script.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sh1rokovs/JS_learning.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sh1rokovs/JS_learning/issues"
+  },
+  "homepage": "https://github.com/sh1rokovs/JS_learning#readme"
+}
