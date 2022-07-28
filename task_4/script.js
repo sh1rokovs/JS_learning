@@ -5,7 +5,7 @@ const products = [
     {id: 4, title: 'Gamepad', price: 4500},
 ]
 
-const renderProduct = (title, price) => {
+const renderProduct = (title="Нет титула", price="Нет цены") => {
     return `<div class="product-item col">
                 <center>
                 <h3 class="">${title}</h3>
@@ -17,9 +17,7 @@ const renderProduct = (title, price) => {
 }
 
 const renderProducts = (list) => {
-    const productList = list.map((product) => {
-        return renderProduct(product.title, product.price)
-    })
+    const productList = list.map(product => renderProduct(product.title, product.price))
     document.querySelector(".products").innerHTML = productList.join(" ")
 }
 
