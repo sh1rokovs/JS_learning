@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="block">
+        <p class="show-button">show-button</p>
+        <p class="delete-button">delete-button</p>
+    </div>
+    <script>
+        const showMessage = () => console.log("OK")
+        const showButton = document.querySelector('.show-button')
+        showButton.addEventListener('click', () => {
+            showMessage()
+        })
+        const deleteButton = document.querySelector('.delete-button')
+        deleteButton.addEventListener('click', () => {
+            showButton.removeEventListener('click', () => {
+                showMessage()
+            })
+        })
+    </script>
+</body>
+</html>

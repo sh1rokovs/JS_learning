@@ -1,1 +1,2 @@
-console.log(function (a) {})
+let list = []
+console.log(list.map())
